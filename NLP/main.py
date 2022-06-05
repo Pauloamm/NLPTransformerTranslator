@@ -11,16 +11,16 @@ import opennmt
 from opennmt import models
 
 
-def GetWords(listOfSentences):
-    totalWords = []
+def GetUniqueChars(listOfSentences):
+    uniqueChars = []
 
     for sentence in listOfSentences:
-        for word in sentence:
-            if word not in totalWords:
-                totalWords.append(word)
-                totalWords.sort()
+        for char in sentence:
+            if char not in uniqueChars:
+                uniqueChars.append(char)
+                uniqueChars.sort()
 
-    return totalWords
+    return uniqueChars
 
 
 def GetOneHotEncodedSentences(sentencesList, charDictionary, charsSize, maxSentencesSize):
@@ -85,8 +85,8 @@ for line in lines[:debugingSize]:
     brazilSentences.append("\t" + brazilSentence + "\t")
 
 
-englishChars = GetWords(englishSentences)
-brazilChars = GetWords(brazilSentences)
+englishChars = GetUniqueChars(englishSentences)
+brazilChars = GetUniqueChars(brazilSentences)
 
 englishDict={}
 for i in range(len(englishChars)):
